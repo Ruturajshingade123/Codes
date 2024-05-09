@@ -1,0 +1,25 @@
+import numpy as np
+from sympy import symbols, Eq, solve
+n = int(input("Enter the Total number of Data Points: "))
+x = np.zeros(n)
+y = np.zeros(n)
+print("-----------Enter the Values of x--------------")
+for i in range(n):
+v = float(input("x" + str(i) + ": "))
+ x[i] = v
+print("-----------Enter the Values of y--------------")
+for i in range(n):
+ v = float(input("y" + str(i) + ": "))
+ y[i] = v
+x = np.array(x)
+y = np.array(y)
+sumX = np.sum(x)
+sumY = np.sum(y)
+sumXY = np.sum(x * y)
+sumX_square = np.sum(np.square(x))
+print(sumX, sumY, sumX_square, sumXY)
+a, b = symbols('a b')
+eq1 = Eq(n * a + b * sumX -sumY, 0) # ax + by = c.............ax + by - c = 0
+eq2 = Eq(a * sumX + b * sumX_square - sumXY, 0)
+solution = solve((eq1, eq2), (a, b))
+print(solution)
