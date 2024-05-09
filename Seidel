@@ -1,0 +1,19 @@
+def seidel(a, x, b):
+    n = len(a)
+    for j in range(0, n):
+        d = b[j]
+        for i in range(0, n):
+            if j != i:
+                d = d - a[j][i] * x[i]
+        x[j] = d / a[j][j]
+    return x
+n = 3
+a = []
+b = []
+x = [0, 0, 0]
+a = [[150, -50, 0], [-50, 200, -50], [0, -50, 150]]
+b = [100, 0, -50]
+print(x)
+for i in range(0, n):
+    x = seidel(a, x, b)
+    print("i1=", x[0], "i2=", x[1], "i3=", x[2])
