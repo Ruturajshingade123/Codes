@@ -1,0 +1,17 @@
+import numpy as np
+n=int(input("Enter the number of data points"))
+x=np.zeros(n)
+y=np.zeros(n)
+print("Enter the data for voltage and current values:")
+for i in range (n):
+    x[i]=float(input('x['+str(1)+']='))
+    y[i]=float(input('y['+str(1)+']='))
+xp=float(input("Enter the interpolation points:"))
+yp=0
+for i in range(n):
+    p=1
+for j in range (n):
+    if i!=j:
+        p=p*((xp-x[j])/x[i]-x[j])
+yp=yp+p*y[i]
+print("Interpolated point: voltage drop at %5f is %5f."%(xp,yp))
